@@ -92,7 +92,7 @@ class Cleaner
             }
         }
 
-        $result = trim(preg_replace("/([^\pL\pN$allowed])+/u", $replacement, trim(strtr($string, $diacritics))), '-');
+        $result = trim(preg_replace("/([^\pL\pN$allowed])+/u", $replacement, strtr(trim($string), $diacritics)), '-');
 
         if ($convertToLowercase) {
             return strtolower($result);
