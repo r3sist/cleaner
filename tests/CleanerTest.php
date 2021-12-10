@@ -42,6 +42,9 @@ final class CleanerTest extends TestCase
         self::assertEquals($cleaner->slug($string, $allowedChars, $replacement, $lowercase), $output);
     }
 
+    /**
+     * @return array[] string, allowed, replacement, toLowercase, expected
+     */
     public function getSlugTestCases(): array
     {
         return [
@@ -56,6 +59,7 @@ final class CleanerTest extends TestCase
             [' Trimmed String With Special Character_ ', '', '-', true, 'trimmed-string-with-special-character'],
             [' Trimmed String With Special Characte?r ', '', '-', true, 'trimmed-string-with-special-characte-r'],
             ['Magyar szöveg speciális karakterek tiltásával és szóközökkel. Üzbég.', ' ÁÍŰŐÜÖÚÓÉáíűőüöúóé', '', false, 'Magyar szöveg speciális karakterek tiltásával és szóközökkel Üzbég'],
+            ['[ABC] a.d-2 (mód.txt', ' ÁÍŰŐÜÖÚÓÉáíűőüöúóé._-', '', false, 'ABC a.d-2 mód.txt'],
         ];
     }
 }

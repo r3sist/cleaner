@@ -31,7 +31,7 @@ class Cleaner
      * Return slug
      * Copyright Fatfree Framework: Web()
      */
-    public function slug(string $string, string $allowed = '', string $replacement = '-', bool $convertToLowercase = true): string
+    public function slug(string $string, string $allowedRegex = '', string $replacement = '-', bool $convertToLowercase = true): string
     {
         // TODO slug diacritics dev https://stackoverflow.com/a/14114443/6144696
         $diacritics = [
@@ -86,13 +86,13 @@ class Cleaner
             '\''=>'',
         ];
 
-        if ($allowed !== '') {
-            foreach (mb_str_split($allowed) as $diacriticsKey) {
+        if ($allowedRegex !== '') {
+            foreach (mb_str_split($allowedRegex) as $diacriticsKey) {
                 unset($diacritics[$diacriticsKey]);
             }
         }
 
-        $result = trim(preg_replace("/([^\pL\pN$allowed])+/u", $replacement, strtr(trim($string), $diacritics)), '-');
+        $result = trim(preg_replace("/([^\pL\pN$allowedRegex])+/u", $replacement, strtr(trim($string), $diacritics)), '-');
 
         if ($convertToLowercase) {
             return strtolower($result);
