@@ -7,6 +7,7 @@ namespace resist\Cleaner;
 
 /**
  * Plain string sanitizer
+ * @deprecated
  */
 class Cleaner
 {
@@ -16,6 +17,7 @@ class Cleaner
     /**
      * Trim, strip_tags, and remove non-printable characters
      * @param string[] $enabledTags list of tag names without < and >
+     * @deprecated Use Symfony's html-sanitizer
      */
     public function clean(string|int|float $string, array $enabledTags = []): string
     {
@@ -30,6 +32,7 @@ class Cleaner
     /**
      * Return slug
      * Copyright Fatfree Framework: Web()
+     * @deprecated Use Symfony's Slugger
      */
     public function slug(string $string, string $allowedRegex = '', string $replacement = '-', bool $convertToLowercase = true): string
     {
