@@ -17,7 +17,7 @@ final class CleanerTest extends TestCase
         self::assertEquals($cleaner->clean($input, $enabledTags), $output);
     }
 
-    public function getCleanerTestCases(): array
+    public static function getCleanerTestCases(): array
     {
         return [
             ['valid string', [], 'valid string'],

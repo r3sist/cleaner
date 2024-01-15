@@ -5,3 +5,6 @@ vendor/
 
 # PHPStorm files
 .idea/
+
+# bin
+bin/composer-unused.phar
